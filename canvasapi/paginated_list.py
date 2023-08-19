@@ -1,4 +1,9 @@
 import re
+from typing import List, Tuple, Optional, Any
+
+
+def get_param_value(params: List[Tuple[str, Any]], param_name: str):
+    return next((param[1] for param in params if param[0] == param_name), None)
 
 
 class PaginatedList(object):
@@ -26,15 +31,17 @@ class PaginatedList(object):
         extra_attribs=None,
         _root=None,
         _url_override=None,
-        **kwargs
+        _kwargs: Optional[List[Tuple[str, Any]]] = None,
     ):
         self._elements = list()
 
         self._requester = requester
         self._content_class = content_class
         self._first_url = first_url
-        self._first_params = kwargs or {}
-        self._first_params["per_page"] = kwargs.get("per_page", 100)
+        self._first_params = _kwargs or []
+        per_page = get_param_value(self._first_params, "per_page")
+        if per_page is None:
+            self._first_params.append(("per_page", 100))
         self._next_url = first_url
         self._next_params = self._first_params
         self._extra_attribs = extra_attribs or {}
@@ -58,7 +65,7 @@ class PaginatedList(object):
             self._request_method,
             self._next_url,
             _url=self._url_override,
-            params=self._next_params,
+            _kwargs=self._next_params,
         )
         data = response.json()
         self._next_url = None

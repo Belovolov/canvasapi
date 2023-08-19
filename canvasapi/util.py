@@ -1,4 +1,5 @@
 import os
+from typing import List, Tuple, Any
 
 
 def is_multivalued(value):
@@ -27,7 +28,7 @@ def is_multivalued(value):
         return False
 
 
-def combine_kwargs(**kwargs):
+def combine_kwargs(**kwargs) -> List[Tuple[str, Any]]:
     """
     Flatten a series of keyword arguments from complex combinations of
     dictionaries and lists into a list of tuples representing
