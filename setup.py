@@ -18,14 +18,14 @@ with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
     long_description = f.read()
 
 setup(
-    name="canvasapi",
+    name="canvasapi-Belovolov",
     version=version,
-    description="API wrapper for the Canvas LMS",
+    description="API wrapper for the Canvas LMS with a fix of the original canvasapi package",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/ucfopen/canvasapi",
-    author="University of Central Florida - Center for Distributed Learning",
-    author_email="techrangers@ucf.edu",
+    url="https://github.com/Belovolov/canvasapi",
+    author="Roman Belovolov",
+    author_email="belovolovri@gmail.com",
     license="MIT License",
     packages=["canvasapi"],
     include_package_data=True,
