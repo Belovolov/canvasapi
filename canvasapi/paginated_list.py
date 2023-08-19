@@ -58,7 +58,7 @@ class PaginatedList(object):
             self._request_method,
             self._next_url,
             _url=self._url_override,
-            **self._next_params,
+            params=self._next_params,
         )
         data = response.json()
         self._next_url = None
