@@ -1,5 +1,5 @@
 import re
-from typing import List, Tuple, Optional, Any
+from typing import Any, List, Optional, Tuple
 
 
 def get_param_value(params: List[Tuple[str, Any]], param_name: str):
