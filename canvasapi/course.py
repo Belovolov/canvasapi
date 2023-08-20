@@ -2369,7 +2369,7 @@ class Course(CanvasObject):
         """
         List all users in a course.
 
-        :calls: `GET /api/v1/courses/:course_id/search_users \
+        :calls: `GET /api/v1/courses/:course_id/users \
         <https://canvas.instructure.com/doc/api/courses.html#method.courses.users>`_
 
         :rtype: :class:`canvasapi.paginated_list.PaginatedList` of
@@ -2381,7 +2381,7 @@ class Course(CanvasObject):
             User,
             self._requester,
             "GET",
-            "courses/{}/search_users".format(self.id),
+            "courses/{}/users".format(self.id),
             _kwargs=combine_kwargs(**kwargs),
         )
 
